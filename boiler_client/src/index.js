@@ -6,6 +6,7 @@ import NavigationBar from "./Components/NavBar/NavBar";
 import "./index.css";
 import Home from './Pages/Home/Home';
 import Landing from "./Pages/Landing/Landing";
+import Leaderboard from './Pages/Leaderboard/Leaderboard';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
           <Routes>
             <Route path="/landing" element={<Landing />} />
             <Route path="/home" element={<Home />} />
-            
+            <Route path="/leaderboard" element={<Leaderboard/>} />
           </Routes>
 
       </Auth0Provider>
