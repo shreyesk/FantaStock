@@ -3,9 +3,11 @@ import Tabs from "@mui/material/Tabs";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "./NavBar.css";
+
 const NavigationBar = () => {
   const navigate = useNavigate();
-  const buttons = { Home: "/", Test: "/hi" };
+  const buttons = { Home: "/", Feed: "/feed", Connections: "/connections", Leaderboard: "/leaderboard", Stock: "/stocks"};
 
   const [value, setValue] = useState(0);
 
@@ -15,7 +17,7 @@ const NavigationBar = () => {
   };
 
   return (
-    <div>
+    <div className="buttonContainer">
       <Tabs value={value} onChange={(e, newValue) => setValue(newValue)} centered>
         {Object.keys(buttons).map((button, index) => (
           <Tab
