@@ -4,6 +4,8 @@ from pymongo.server_api import ServerApi
 import os
 from dotenv import load_dotenv
 
+import stock_data
+
 load_dotenv()
 
 cluster_user = os.getenv("cluster_user")
@@ -14,21 +16,59 @@ uri = f"mongodb+srv://{cluster_user}:{cluster_password}@{cluster_uri}/?retryWrit
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
-# Send a ping to confirm a successful connection
-try:
-    client.admin.command('ping')
-except Exception as e:
-    print(e)
+def verify_user(username_try, password_try):
+    users = client.users
+    logins = users.logins
 
+    query = {"username": username_try, "password": password_try}
 
-# Access the 'sample_supplies' database
-sample_supplies_db = client.sample_supplies
+    document = logins.find_one(query)
 
-# Access the 'sales' collection within the 'sample_supplies' database
-sales_collection = sample_supplies_db.sales
+    return True if document else False
 
-# Read a single entry from the 'sales' collection
-entry = sales_collection.find_one()
+def create_user(name, sub, money=10000):
+    query_to_insert = {
+        'name': name,
+        'sub': sub,
+        'money': money,
+        'portfolio': [],
+        'history': [],
+        'connections': [] 
+    }
 
-# Print the retrieved entry
-print(entry)
+    users = client.users
+    profiles = users.profiles
+
+    query = {"name": name}
+
+    document = profiles.find_one(query)
+
+    # only create user if user not exists
+    if not document:
+        profiles.insert_one(query_to_insert)
+
+def create_stock(ticker_symbol):
+    stocks = client.stocks
+    prices = stocks.prices
+
+    query = {"ticker_symbol": ticker_symbol}
+
+    document = prices.find_one(query)
+
+    if not document:
+        stock_prices = stock_data.get_stock_price(ticker_symbol)
+        prices.insert_one({"ticker_symbol": ticker_symbol, "prices": stock_prices})
+
+def read_stock(ticker_symbol, day):
+    stocks = client.stocks
+    prices = stocks.prices
+
+    query = {"ticker_symbol": ticker_symbol}
+
+    document = prices.find_one(query)
+
+    if document:
+        return document["prices"][day]
+    else:
+        create_stock(ticker_symbol)
+        return read_stock(ticker_symbol, day)

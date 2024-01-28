@@ -1,3 +1,5 @@
+import database
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -6,6 +8,11 @@ app = Flask(__name__)
 @app.route('/default_greet')
 def hello():
     return jsonify({"message": "Hello, World!"})
+
+@app.route('/create_user', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    database.create_user(data['name'], data['sub'])
 
 # example of sending a post request with data as a json
 @app.route('/greet', methods=['POST'])
