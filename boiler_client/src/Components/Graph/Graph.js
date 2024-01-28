@@ -13,6 +13,7 @@ export default function BasicSparkLineCustomization({ data, hoverInfo }) {
             data={data}
             showHighlight={hoverInfo}
             showTooltip={hoverInfo}
+            
           />
         </Box>
       </Stack>

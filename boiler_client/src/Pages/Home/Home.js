@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
+import React, { useEffect, useState } from 'react';
 import Graph from '../../Components/Graph/Graph';
+import BasicLineChart from "../../Components/LineGraph/LineGraph";
 import { fetchPost } from '../../util/fetchHelp';
 import "./Home.css";
 
@@ -21,7 +22,7 @@ const Home = () => {
             });
             const postHistoryData = {"name": user.name};
             fetchPost("/read_history", postHistoryData).then(data => {
-                setWealthData(data['history']);
+                setWealthData([data['history'], data['xAxis']]);
             });
         }
     }, []); // Empty dependency array ensures this runs once
@@ -55,7 +56,8 @@ const Home = () => {
                 </div>
                 <div className='Graph-Container'>
                     <div className='Graph-Holder'>
-                        {wealthData && <Graph data={wealthData} hoverInfo={true}/>}
+                        {wealthData && console.log(wealthData)}
+                        {wealthData && <BasicLineChart xData={wealthData[1]} yData = {wealthData[0]}/>}
                     </div>
                    
                 </div>

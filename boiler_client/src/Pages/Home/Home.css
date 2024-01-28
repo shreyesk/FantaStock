@@ -29,14 +29,18 @@
 .Stock-Graph{
     width: 100%;
 }
-.Graph-Container{
+.Graph-Container {
     height: 85vh;
-}
-.Graph-Holder{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top vertically */
+  }
+  
+  .Graph-Holder {
     border: 1px solid green;
-    height:75%;
-    width: 75%;
-}
-
+    height: 75%; /* 75% of the height of the Graph-Container */
+    width: 75%; /* 75% of the width of the Graph-Container */
+  }
+  
 
 /* Add any additional styling as needed */
