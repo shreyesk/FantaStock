@@ -1,0 +1,98 @@
+.messageBox {
+    position: relative;
+    /* bottom: 290px;
+    right: 450px; */
+    background-color: #ffffff;
+    padding: 205px;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* padding-top: 25px;
+    padding-bottom: 25px; */
+    display: flex;
+    flex-direction: column;
+  
+    align-items: flex-start;
+    justify-content: flex-start;
+  
+  
+    border-radius: 1000px;
+    /* width: 550px;
+    height: 70px; */
+    /* margin: auto; */
+  }
+  
+  .messageTurtle2 {
+    margin-bottom: 5px;
+    font-size: 32px;
+    padding-left: 120px;
+    font-style: italic;
+    
+  }
+  .messageTurtle {
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+    font-size: 35px;
+    color:#1dacda;
+  
+  }
+  .message {
+    margin-bottom: 5px;
+    font-size: 24px;
+  
+  }
+
+  .containerIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .box{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.box form{
+    background: var(--white);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;/* Adds shadow to the outside of the main box*/
+    width: min(100%, 470px);
+    padding: 70px;/* Determines how right and left spaces are*/
+    display: grid;
+    gap: 1rem;/* Space between Items*/
+    border-radius: 10px;
+}
+
+/* WelcomeMessage.css */
+
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    color: var(--green);
+  }
+  
+  .welcome-message {
+    text-align: center;
+    font-size: 17px;
+  }
+  
+  .login-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--green);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .login-button:hover {
+    background-color: #3a4e1b; /* Darken the green on hover */
+  }
+  
