@@ -116,7 +116,7 @@ def get_feed():
         m = max([connectionHistory[y][x] for y in connectionHistory.keys()])
         print(m)
         i = [connectionHistory[y][x] for y in connectionHistory.keys()].index(m)
-        ret.append(f"{connections[i]} had the biggest portfolio at {m} dollars! - {day - x - 1} days ago.")
+        ret.append(f"{connections[i]} had the biggest portfolio at {round(m, 2)} dollars! - {day - x - 1} days ago.")
     
     return jsonify(ret)
 if __name__ == '__main__':

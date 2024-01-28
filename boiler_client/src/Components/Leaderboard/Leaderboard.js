@@ -38,7 +38,7 @@ export default function SelectedListItem({ playerData }) {
             <ListItemIcon>
               {/* You can use an icon here if needed */}
             </ListItemIcon>
-            <ListItemText primary={`${player.name} - Score: ${player.score}`} />
+            <ListItemText primary={`${player.name} - Score: ${(player.score).toFixed(2)}`} />
           </ListItemButton>
         ))}
       </List>

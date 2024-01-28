@@ -40,7 +40,7 @@ const Home = () => {
                         <div key={symbol} className='Card'>
                             <div className='Stock-Info'>
                                 <p>Stock: {symbol} ({price[0]})</p>
-                                <p>Price: {price[1][price[1].length - 1]}</p>
+                                <p>Price: {(price[1][price[1].length - 1]).toFixed(2)}</p>
                                 {price[1][price[1].length - 1] - price[1][price[1].length - 2] >= 0 ? (
                                     <p style={{color:"green"}}>
                                         +{(((price[1][price[1].length - 1] - price[1][price[1].length - 2]) / price[1][price[1].length - 2]) * 100).toFixed(2)}%
@@ -65,7 +65,7 @@ const Home = () => {
                    
                 </div>
             </div>
-            {money && <h2 style={{"width": "100%", "textAlign": "center"}}>Money: {money}</h2>}
+            {money && <h2 style={{"width": "100%", "textAlign": "center"}}>Total Spending Power: {(money).toFixed(2)}</h2>}
         </div>
         )
     );
