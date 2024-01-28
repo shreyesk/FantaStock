@@ -1,8 +1,14 @@
 import database
+from yahoo_fin import stock_info as si
 
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+
+@app.route('/read_ticker_symbols', methods=['POST'])
+def read_ticker_symbols():
+    return jsonify({'ticker_symbols': si.tickers_nasdaq})
+
 
 @app.route('/read_connections', methods=['POST'])
 def read_connections():
