@@ -40,6 +40,11 @@ def read_user_groups():
     groups = database.read_user_groups(data['name'])
     return jsonify({'groups': groups})
 
+@app.route('/read_groups', methods=['POST'])
+def read_groups():
+    groups = database.read_groups()
+    return jsonify({'groups': groups})
+
 @app.route('/create_user', methods=['POST'])
 def create_user():
     data = request.get_json()

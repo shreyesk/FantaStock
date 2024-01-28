@@ -196,6 +196,15 @@ def create_group(group_name, user_name):
     if not document:
         groups.insert_one({"name": group_name, "owner": user_name, "users": [user_name]})
 
+def read_groups():
+    users = client.users
+    groups = users.groups
+
+    groups_available = []
+    for document in groups.find():
+        groups_available.append(document['name'])
+    return groups_available
+
 def read_group(name):
     users = client.users
     groups = users.groups
