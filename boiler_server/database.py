@@ -1,8 +1,8 @@
+import os
+
+from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
-import os
-from dotenv import load_dotenv
 
 import stock_data
 
@@ -32,6 +32,8 @@ def read_history(name):
 
     document = profiles.find_one(query)
     return document['history']
+
+
 
 def read_connections(name):
     users = client.users
@@ -284,7 +286,7 @@ def increment_day():
         new_history = document['history'] + [total_value]
         update = {"$set": {"history": new_history}}
         profiles.update_one({'_id': document['_id']}, update)
-
+    
     stocks = client.stocks
     day = stocks.day
     document = day.find_one()

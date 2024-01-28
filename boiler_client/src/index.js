@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./Components/NavBar/NavBar";
 import "./index.css";
 import Connections from './Pages/Connections/Connections';
+import Feed from './Pages/Feed/Feed';
+import Group from './Pages/Group/Group';
 import Home from './Pages/Home/Home';
 import Landing from "./Pages/Landing/Landing";
 import LeaderboardGroup from './Pages/Leaderboard/LeaderboardGroup';
@@ -29,6 +31,8 @@ const App = () => {
             <Route path="/leaderboard" element={<LeaderboardGroup/>} />
             <Route path = "/connections" element={<Connections/>}/>
             <Route path = "/stocks" element={<StockSearch/>}/>
+            <Route path = "/group" element={<Group/>}/>
+            <Route path = "/feed" element={<Feed/>}/>
           </Routes>
 
       </Auth0Provider>

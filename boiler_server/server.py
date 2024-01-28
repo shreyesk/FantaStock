@@ -90,5 +90,23 @@ def read_stock_history():
     history = database.read_stock_history(data['ticker_symbol']) 
     return jsonify({"history": history})
 
+@app.route("/get_feed", methods = ["POST"])
+def get_feed():
+    data = request.get_json()
+    ret = []
+    connections = [x['name'] for x in database.read_connections(data["name"])]
+    connectionHistory = {}
+    for person in connections:
+        history = database.read_history(person)
+        connectionHistory[person] = history
+    print(connectionHistory)
+    day = database.read_day()
+    for x in range(day -1 , -1, -1):
+        m = max([connectionHistory[y][x] for y in connectionHistory.keys()])
+        print(m)
+        i = [connectionHistory[y][x] for y in connectionHistory.keys()].index(m)
+        ret.append(f"{connections[i]} had the biggest portfolio at {m} dollars! - {day - x - 1} days ago.")
+    
+    return jsonify(ret)
 if __name__ == '__main__':
     app.run(debug=True, port=3001)
