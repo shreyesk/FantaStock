@@ -16,15 +16,14 @@ uri = f"mongodb+srv://{cluster_user}:{cluster_password}@{cluster_uri}/?retryWrit
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
-def verify_user(username_try, password_try):
+def read_history(name):
     users = client.users
     logins = users.logins
 
-    query = {"username": username_try, "password": password_try}
+    query = {"name": name}
 
     document = logins.find_one(query)
-
-    return True if document else False
+    return document['history']
 
 def create_user(name, sub, money=10000):
     query_to_insert = {
@@ -32,7 +31,7 @@ def create_user(name, sub, money=10000):
         'sub': sub,
         'money': money,
         'portfolio': [],
-        'history': [],
+        'history': [money for _ in range(read_day())],
         'connections': [] 
     }
 
@@ -48,7 +47,35 @@ def create_user(name, sub, money=10000):
         profiles.insert_one(query_to_insert)
 
 def buy_stock(name, ticker_symbol):
-    pass
+    users = client.users
+    profiles = users.profiles
+
+    query = {"name": name}
+    document = profiles.find_one(query)
+
+    if document:
+        price = read_stock_price(ticker_symbol)
+        if document['money'] > price:
+            new_money = document['money'] - price
+            new_portfolio = document['portfolio'] + [ticker_symbol]
+            user_update = {"$set": {"money": new_money, "portfolio": new_portfolio}}
+            profiles.update_one(query, user_update)
+
+def sell_stock(name, ticker_symbol):
+    users = client.users
+    profiles = users.profiles
+
+    query = {"name": name}
+    document = profiles.find_one(query)
+
+    if document:
+        price = read_stock_price(ticker_symbol)
+        if ticker_symbol in document['portfolio']:
+            new_money = document['money'] + price
+            new_portfolio = document['portfolio']
+            new_portfolio.remove(ticker_symbol)
+            user_update = {"$set": {"money": new_money, "portfolio": new_portfolio}}
+            profiles.update_one(query, user_update)
 
 def create_stock(ticker_symbol):
     stocks = client.stocks
@@ -161,6 +188,19 @@ def read_day():
     return document['day']
 
 def increment_day():
+    users = client.users
+    profiles = users.profiles
+
+    for document in profiles.find():
+        portfolio = document['portfolio']
+        portfolio_value = 0
+        for asset in portfolio:
+            portfolio_value += read_stock_price(asset)
+        total_value = portfolio_value + document['money']
+        new_history = document['history'] + [total_value]
+        update = {"$set": {"history": new_history}}
+        profiles.update_one({'_id': document['_id']}, update)
+
     stocks = client.stocks
     day = stocks.day
     document = day.find_one()

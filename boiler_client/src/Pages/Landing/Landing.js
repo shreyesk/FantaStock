@@ -13,17 +13,17 @@ import SearchPage from './SearchPage.js';
 function Landing() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  const [currentForm, setCurrentForm]=useState("search")
+  const [currentForm, setCurrentForm]=useState("main")
   const [getData, setGetData] = useState()
   const [postData, setPostData] = useState()
 
-  // if(!isAuthenticated) {
-  //   return <LoginButton />
-  // } else {
-  //   console.log(user);
-  //   const createUserData = {'name': user.name, 'sub': user.sub};
-  //   fetchPost("/create_user", createUserData);
-  // }
+  if(!isAuthenticated) {
+    return <LoginButton />
+  } else {
+    console.log(user);
+    const createUserData = {'name': user.name, 'sub': user.sub};
+    fetchPost("/create_user", createUserData);
+  }
 
   // useEffect(() =>{
   //   fetchGet("/default_greet").then(data => {
