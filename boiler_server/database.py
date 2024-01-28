@@ -70,7 +70,7 @@ def read_stock_price(ticker_symbol):
 
     document = prices.find_one(query)
 
-    day = get_day()
+    day = read_day()
     if document:
         return document["prices"][day]
     else:

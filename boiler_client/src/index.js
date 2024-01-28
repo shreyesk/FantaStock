@@ -19,7 +19,7 @@ const App = () => {
 
           <NavigationBar />
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Home />} />
           </Routes>
 
       </Auth0Provider>

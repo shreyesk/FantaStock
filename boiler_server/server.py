@@ -31,14 +31,14 @@ def create_stock():
     database.create_stock(data["ticker_symbol"])
     return jsonify({'message': 'success'})
 
-@app.route("read_stock_price", methods=["POST"])
-def read_stock():
+@app.route("/read_stock_price", methods=["POST"])
+def read_stock_price():
     data = request.get_json()
     price = database.read_stock(data['ticker_symbol'], data['day']) 
     return jsonify({'price': price})
 
-@app.route("read_stock_history", methods=["POST"])
-def read_stock():
+@app.route("/read_stock_history", methods=["POST"])
+def read_stock_history():
     data = request.get_json()
     history = database.read_stock(data['ticker_symbol'], data['days']) 
     return jsonify({"history": history})
