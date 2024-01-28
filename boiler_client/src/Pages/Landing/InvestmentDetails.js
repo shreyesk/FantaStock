@@ -15,11 +15,11 @@ const InvestmentDetails = () => {
       {/* <h2>Individual Investments</h2> */}
       { <ul>
         {investments.map((investment, index) => (
-          <div class="notification">
-          <div class="notiglow"></div>
-          <div class="notiborderglow"></div>
-          <div class="notititle">{investment.name}</div>
-          <div class="notibody">{investment.amount}</div>
+          <div className="notification">
+          <div className="notiglow"></div>
+          <div className="notiborderglow"></div>
+          <div className="notititle">{investment.name}</div>
+          <div className="notibody">{investment.amount}</div>
         </div>
           // <li key={index}>
           //   <span>{investment.name}:</span>
