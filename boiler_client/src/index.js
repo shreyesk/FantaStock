@@ -28,11 +28,11 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/landing" element={<Landing />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/leaderboard" element={<LeaderboardGroup/>} />
-            <Route path = "/connections" element={<Connections/>}/>
             <Route path = "/stocks" element={<StockSearch/>}/>
-            <Route path = "/group" element={<Group/>}/>
+            <Route path = "/groups" element={<Group/>}/>
             <Route path = "/feed" element={<Feed/>}/>
+            <Route path = "/connections" element={<Connections/>}/>
+            <Route path="/leaderboard" element={<LeaderboardGroup/>} />
           </Routes>
 
       </Auth0Provider>
