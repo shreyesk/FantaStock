@@ -34,13 +34,13 @@ def create_stock():
 @app.route("/read_stock_price", methods=["POST"])
 def read_stock_price():
     data = request.get_json()
-    price = database.read_stock(data['ticker_symbol'], data['day']) 
+    price = database.read_stock_price(data['ticker_symbol'], data['day']) 
     return jsonify({'price': price})
 
 @app.route("/read_stock_history", methods=["POST"])
 def read_stock_history():
     data = request.get_json()
-    history = database.read_stock(data['ticker_symbol'], data['days']) 
+    history = database.read_stock_history(data['ticker_symbol'], data['days']) 
     return jsonify({"history": history})
 
 if __name__ == '__main__':

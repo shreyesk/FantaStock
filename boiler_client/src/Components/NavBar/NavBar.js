@@ -7,7 +7,7 @@ import "./NavBar.css";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
-  const buttons = { Home: "/", Feed: "/feed", Connections: "/connections", Leaderboard: "/leaderboard", Stock: "/stocks"};
+  const buttons = { Landing: "/landing", Home: "/home", Feed: "/feed", Connections: "/connections", Leaderboard: "/leaderboard", Stock: "/stocks"};
 
   const [value, setValue] = useState(0);
 

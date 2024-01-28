@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./Components/NavBar/NavBar";
 import "./index.css";
 import Landing from "./Pages/Landing/Landing";
+import Home from './Pages/Home/Home';
 
 const App = () => {
   return (
@@ -19,7 +20,13 @@ const App = () => {
 
           <NavigationBar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/landing" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
           </Routes>
 
       </Auth0Provider>
