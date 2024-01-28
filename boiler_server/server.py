@@ -19,7 +19,7 @@ def sell_stock():
 
 @app.route('/read_ticker_symbols', methods=['POST'])
 def read_ticker_symbols():
-    return jsonify({'ticker_symbols': si.tickers_nasdaq})
+    return jsonify({'ticker_symbols': si.tickers_nasdaq()})
 
 
 @app.route('/read_connections', methods=['POST'])
