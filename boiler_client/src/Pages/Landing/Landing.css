@@ -199,3 +199,7 @@ body {
   
   /* Add additional styling for your leaderboard content as needed */
   
+  .searchContainer{
+    display:flex;
+    background-color: #ffffff;
+  }
