@@ -6,21 +6,24 @@ import './Landing.css';
 import Leaderboard from './Leaderboard.js';
 import Main from "./Main";
 import LoginButton from '../../Components/LoginButton.js';
+import StockGraph from './StockGraph.js';
+import StockSearch from './StockSearch.js';
+import SearchPage from './SearchPage.js';
 
 function Landing() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  const [currentForm, setCurrentForm]=useState("main")
+  const [currentForm, setCurrentForm]=useState("search")
   const [getData, setGetData] = useState()
   const [postData, setPostData] = useState()
 
-  if(!isAuthenticated) {
-    return <LoginButton />
-  } else {
-    console.log(user);
-    const createUserData = {'name': user.name, 'sub': user.sub};
-    fetchPost("/create_user", createUserData);
-  }
+  // if(!isAuthenticated) {
+  //   return <LoginButton />
+  // } else {
+  //   console.log(user);
+  //   const createUserData = {'name': user.name, 'sub': user.sub};
+  //   fetchPost("/create_user", createUserData);
+  // }
 
   // useEffect(() =>{
   //   fetchGet("/default_greet").then(data => {
@@ -40,6 +43,7 @@ function Landing() {
       /*Sorry for this compact code if else wasnt working and knew no other way*/ 
       currentForm === "main" ? <Main onFormSwitch={setCurrentForm} />: 
       currentForm === "lead" ? <Leaderboard onFormSwitch={setCurrentForm} />: 
+      currentForm === "search" ? <SearchPage onFormSwitch={setCurrentForm} />: 
 
       // currentForm === "print" ? <Print onFormSwitch={setCurrentForm} plan={plan}/>:
 
