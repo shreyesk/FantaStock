@@ -16,6 +16,14 @@ uri = f"mongodb+srv://{cluster_user}:{cluster_password}@{cluster_uri}/?retryWrit
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
+def read_money(name):
+    users = client.users
+    profiles = users.profiles
+
+    query = {"name": name}
+    document = profiles.find_one(query)
+    return document['money']
+
 def read_history(name):
     users = client.users
     profiles = users.profiles

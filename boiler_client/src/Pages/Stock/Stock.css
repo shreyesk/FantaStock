@@ -1,9 +1,19 @@
-.Stock-Container {
-    justify-content: space-between;
+.Stock-Search-Container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
   }
+
+.Transaction-Container {
+  display: flex;
+  margin: 2%;
+}
   
   .Stock-Search {
-    border: 1px solid red;
+    margin: 3%;
   }
   
   .Stock-List {
@@ -13,5 +23,6 @@
   
   .Checkout {
     /* Add styles for the Checkout component */
+    width: 50%;
   }
   

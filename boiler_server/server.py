@@ -5,6 +5,12 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+@app.route('/read_money', methods=['POST'])
+def read_money():
+    data = request.get_json()
+    money = database.read_money(data['name'])
+    return jsonify({'money': money})
+
 @app.route('/buy_stock', methods=['POST'])
 def buy_stock():
     data = request.get_json()

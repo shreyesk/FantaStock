@@ -1,45 +1,53 @@
-
+.Money-Container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .Main-Container{
     padding-top: 50px;
 }
 .Main-Container {
     display: flex;
+    justify-content: center;
 }
 
 .Stock-Container {
-    border: 1px solid black;
+    margin: 1%;
+    border: 3px solid black;
     flex: 1;
     width: 25%;
 }
 
 .Graph-Container {
-    border: 1px solid red;
-    flex: 3;
     width: 75%;
-
+    display: flex;
+    justify-content: center;
 }
 .Card{
-    border: 1px solid blue;
     display:flex;
+    background-color: gainsboro;
+    border-radius: 5px;
+    margin: 1px;
 }
 .Stock-Info{
     padding-left:5px;
 }
 .Stock-Graph{
     width: 100%;
-}
-.Graph-Container {
-    height: 85vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the top vertically */
+}
+.Graph-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items to the top vertically */
   }
   
   .Graph-Holder {
-    border: 1px solid green;
-    height: 75%; /* 75% of the height of the Graph-Container */
-    width: 75%; /* 75% of the width of the Graph-Container */
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
 

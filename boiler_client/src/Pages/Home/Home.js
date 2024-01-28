@@ -9,6 +9,7 @@ const Home = () => {
     // const [stockData, setStockData] = useState({"APPL": [3, [1, 2, 3, 4, 5, 20]], "TSLA": [4, [6, 5, 4, 3, 12, 2]]})
     const [stockData, setStockData] = useState();
     const [wealthData, setWealthData] = useState();
+    const [money, setMoney] = useState();
     //const postWealthData = {}
 
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -24,12 +25,15 @@ const Home = () => {
             fetchPost("/read_history", postHistoryData).then(data => {
                 setWealthData([data['history'], data['xAxis']]);
             });
+            fetchPost('/read_money', postHistoryData).then(data => {
+                setMoney(data['money']);
+            });
         }
     }, []); // Empty dependency array ensures this runs once
 
 
     return (isAuthenticated && 
-        ( <div>
+        ( <div className="Money-Container">
             <div className='Main-Container'>
                 <div className='Stock-Container'>
                     {stockData && Object.entries(stockData).map(([symbol, price]) => (
@@ -62,6 +66,7 @@ const Home = () => {
                    
                 </div>
             </div>
+            {money && <h2 style={{"width": "100%", "textAlign": "center"}}>Money: {money}</h2>}
         </div>
         )
     );

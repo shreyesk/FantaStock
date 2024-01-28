@@ -17,8 +17,8 @@ export default function BasicLineChart(props) {
           data: yData,
         },
       ]}
-      width={500}
-      height={300}
+      width={1000}
+      height={600}
     />
   );
 }
