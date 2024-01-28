@@ -1,0 +1,36 @@
+
+
+.Main-Container{
+    padding-top: 50px;
+}
+.Main-Container {
+    display: flex;
+}
+
+.Stock-Container {
+    border: 1px solid black;
+    flex: 1;
+    width: 25%;
+}
+
+.Graph-Container {
+    border: 1px solid red;
+    flex: 3;
+    width: 75%;
+
+}
+.Card{
+    border: 1px solid blue;
+    display:flex;
+}
+.Stock-Info{
+    padding-left:5px;
+}
+.Stock-Graph {
+    
+    width: 40%;
+    
+  }
+
+
+/* Add any additional styling as needed */

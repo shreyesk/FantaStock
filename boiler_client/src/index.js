@@ -1,13 +1,10 @@
+import { Auth0Provider } from '@auth0/auth0-react';
 import React from "react";
 import { createRoot } from 'react-dom/client';
-import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./Components/NavBar/NavBar";
 import "./index.css";
 import Landing from "./Pages/Landing/Landing";
-import LogoutButton from "./Components/LogoutButton";
-import LoginButton from "./Components/LoginButton";
-import Profile from "./Components/Profile";
 
 const App = () => {
   return (
@@ -22,7 +19,7 @@ const App = () => {
 
           <NavigationBar />
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Home />} />
           </Routes>
 
       </Auth0Provider>
