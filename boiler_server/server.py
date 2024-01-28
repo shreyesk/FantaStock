@@ -24,5 +24,26 @@ def greet():
     else:
         return jsonify({'error': 'Missing "name" parameter'}), 400
 
+@app.route('/verify', methods=['POST'])
+def verify_user():
+    data = request.get_json()
+
+    return jsonify(data)
+
+
+@app.route("/create_stock", methods=["POST"])
+def create_stock():
+    data = request.get_json()
+    database.create_stock(data["ticker_symbol"],data["prices"])
+    return jsonify({"ticker_symbol": data["ticker_symbol"],"prices": data["prices"]})
+
+
+@app.route("read_stock", methods=["POST"])
+def read_stock():
+    data=request.get_json()
+    database.read_stock(data["prices"]["day"]) 
+    return jsonify({"prices":data["prices"]["day"]})
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=3001)
