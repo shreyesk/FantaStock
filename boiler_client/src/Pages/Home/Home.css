@@ -26,11 +26,17 @@
 .Stock-Info{
     padding-left:5px;
 }
-.Stock-Graph {
-    
-    width: 40%;
-    
-  }
+.Stock-Graph{
+    width: 100%;
+}
+.Graph-Container{
+    height: 85vh;
+}
+.Graph-Holder{
+    border: 1px solid green;
+    height:75%;
+    width: 75%;
+}
 
 
 /* Add any additional styling as needed */
