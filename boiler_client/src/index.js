@@ -4,9 +4,11 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./Components/NavBar/NavBar";
 import "./index.css";
+import Connections from './Pages/Connections/Connections';
 import Home from './Pages/Home/Home';
 import Landing from "./Pages/Landing/Landing";
 import LeaderboardGroup from './Pages/Leaderboard/LeaderboardGroup';
+import StockSearch from './Pages/Stock/Stock';
 
 const App = () => {
   return (
@@ -23,7 +25,9 @@ const App = () => {
           <Routes>
             <Route path="/landing" element={<Landing />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/leaderboard" element={<LeaderboardGroup />} />
+            <Route path="/leaderboard" element={<LeaderboardGroup/>} />
+            <Route path = "/connections" element={<Connections/>}/>
+            <Route path = "/stocks" element={<StockSearch/>}/>
           </Routes>
 
       </Auth0Provider>
