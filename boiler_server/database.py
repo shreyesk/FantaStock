@@ -18,12 +18,33 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 
 def read_history(name):
     users = client.users
-    logins = users.logins
+    profiles = users.profiles
 
     query = {"name": name}
 
-    document = logins.find_one(query)
+    document = profiles.find_one(query)
     return document['history']
+
+def read_portfolio_history(name):
+    users = client.users
+    profiles = users.profiles
+
+    query = {'name': name}
+
+    document = profiles.find_one(query)
+
+    assets = dict()
+    for asset in document['portfolio']:
+        if asset in assets:
+            assets[asset] += 1
+        else:
+            assets[asset] = 1
+
+    to_return = {} # formatted so Jason has an easier time
+    for asset in assets:
+        to_return[asset] = [assets[asset], read_stock_history(asset)]
+    
+    return to_return
 
 def create_user(name, sub, money=10000):
     query_to_insert = {
@@ -104,7 +125,7 @@ def read_stock_price(ticker_symbol):
         create_stock(ticker_symbol)
         return read_stock_price(ticker_symbol)
 
-def read_stock_history(ticker_symbol, days):
+def read_stock_history(ticker_symbol):
     stocks = client.stocks
     prices = stocks.prices
 
@@ -113,10 +134,10 @@ def read_stock_history(ticker_symbol, days):
     document = prices.find_one(query)
 
     if document:
-        return document["prices"][:days]
+        return document["prices"][:read_day()]
     else:
         create_stock(ticker_symbol)
-        return read_stock_history(ticker_symbol, days)
+        return read_stock_history(ticker_symbol)
 
 def create_group(group_name, user_name):
     users = client.users
