@@ -25,6 +25,26 @@ def read_history(name):
     document = profiles.find_one(query)
     return document['history']
 
+def read_connections(name):
+    users = client.users
+    groups = users.groups
+    profiles = users.profiles
+
+    connections = set()
+    for document in groups.find():
+        if name in document['users']:
+            for connection in document['users']:
+                connections.add(connection)
+
+    scores = []
+    for connection in connections:
+        score = dict()
+        score['name'] = connection
+        score['score'] = profiles.find_one({'name': connection})['history'][-1]
+        scores.append(score)
+
+    return scores
+
 def read_leaderboard(group):
     users = client.users
     groups = users.groups
