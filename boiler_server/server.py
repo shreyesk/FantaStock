@@ -5,6 +5,18 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+@app.route('/buy_stock', methods=['POST'])
+def buy_stock():
+    data = request.get_json()
+    database.buy_stock(data['name'], data['ticker_symbol'])
+    return jsonify({'message': 'success'})
+
+@app.route('/sell_stock', methods=['POST'])
+def sell_stock():
+    data = request.get_json()
+    database.sell_stock(data['name'], data['ticker_symbol'])
+    return jsonify({'message': 'success'})
+
 @app.route('/read_ticker_symbols', methods=['POST'])
 def read_ticker_symbols():
     return jsonify({'ticker_symbols': si.tickers_nasdaq})
