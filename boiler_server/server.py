@@ -4,6 +4,12 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+@app.route('/read_connections', methods=['POST'])
+def read_connections():
+    data = request.get_json()
+    connections = database.read_connections(data['name'])
+    return jsonify({'connections': connections})
+
 @app.route('/read_leaderboard', methods=['POST'])
 def read_leaderboard():
     data = request.get_json()
@@ -32,7 +38,7 @@ def create_stock():
 def read_history():
     data = request.get_json()
     history = database.read_history(data['name']) 
-    return jsonify({'history': history})
+    return jsonify({'history': history, 'xAxis': [i for i in range(len(history))]})
 
 @app.route("/read_portfolio_history", methods=["POST"])
 def read_portfolio_history():
