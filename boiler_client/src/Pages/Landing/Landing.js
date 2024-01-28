@@ -6,6 +6,7 @@ import LoginButton from '../../Components/LoginButton.js';
 import './Landing.css';
 import Leaderboard from './Leaderboard.js';
 import Main from "./Main";
+import Home from "../Home/Home.js";
 
 function Landing() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -20,6 +21,7 @@ function Landing() {
     console.log(user);
     const createUserData = {'name': user.name, 'sub': user.sub};
     fetchPost("/create_user", createUserData);
+    return <Home />
   }
 
   // useEffect(() =>{

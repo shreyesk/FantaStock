@@ -23,6 +23,7 @@ const App = () => {
 
           <NavigationBar />
           <Routes>
+            <Route path="/" element={<Landing />} />
             <Route path="/landing" element={<Landing />} />
             <Route path="/home" element={<Home />} />
             <Route path="/leaderboard" element={<LeaderboardGroup/>} />

@@ -60,7 +60,6 @@ const Home = () => {
                 </div>
                 <div className='Graph-Container'>
                     <div className='Graph-Holder'>
-                        {wealthData && console.log(wealthData)}
                         {wealthData && <BasicLineChart xData={wealthData[1]} yData = {wealthData[0]}/>}
                     </div>
                    
