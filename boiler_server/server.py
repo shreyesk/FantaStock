@@ -13,6 +13,7 @@ def hello():
 def create_user():
     data = request.get_json()
     database.create_user(data['name'], data['sub'])
+    return jsonify({'message': 'success'})
 
 # example of sending a post request with data as a json
 @app.route('/greet', methods=['POST'])

@@ -25,10 +25,6 @@ const App = () => {
             <Route path="/" element={<Landing />} />
           </Routes>
 
-          <LoginButton />
-          <LogoutButton />
-          <Profile />
-
       </Auth0Provider>
     </div>
   );
