@@ -7,7 +7,7 @@ import Leaderboard from './Leaderboard.js';
 import Main from "./Main";
 
 function Landing() {
-  const [currentForm, setCurrentForm]=useState("lead")
+  const [currentForm, setCurrentForm]=useState("main")
   const [getData, setGetData] = useState()
   const [postData, setPostData] = useState()
   // useEffect(() =>{

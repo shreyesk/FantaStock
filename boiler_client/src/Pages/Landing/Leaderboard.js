@@ -9,15 +9,15 @@ const Leaderboard = () => {
       <div className="card1">
       <h1>Hi</h1>
 
-        <div class="tileContainer">
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
-          <div class="tile"></div>     
+        <div className="tileContainer">
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
+          <div className="tile"></div>     
         </div>   
       </div>
     </div>
