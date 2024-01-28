@@ -1,0 +1,19 @@
+.Stock-Container {
+    display:flex;
+    justify-content: space-between;
+  }
+  
+  .Stock-Search {
+    flex: 1;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  
+  .Stock-List {
+ 
+    /* Add styles for the StockList component */
+  }
+  
+  .Checkout {
+    /* Add styles for the Checkout component */
+  }
+  

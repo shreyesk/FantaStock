@@ -17,7 +17,7 @@ function renderRow(props) {
   );
 }
 
-export default function VirtualizedList() {
+export default function StockList() {
   return (
     <Box
       sx={{ width: '100%', height: 400, maxWidth: 360, bgcolor: 'background.paper' }}

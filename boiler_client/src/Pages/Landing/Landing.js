@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { fetchGet, fetchPost } from '../../util/fetchHelp.js';
+import React, { useState } from 'react';
+import { fetchPost } from '../../util/fetchHelp.js';
 
+import LoginButton from '../../Components/LoginButton.js';
 import './Landing.css';
 import Leaderboard from './Leaderboard.js';
 import Main from "./Main";
-import LoginButton from '../../Components/LoginButton.js';
-import StockGraph from './StockGraph.js';
-import StockSearch from './StockSearch.js';
-import SearchPage from './SearchPage.js';
 
 function Landing() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -43,7 +40,7 @@ function Landing() {
       /*Sorry for this compact code if else wasnt working and knew no other way*/ 
       currentForm === "main" ? <Main onFormSwitch={setCurrentForm} />: 
       currentForm === "lead" ? <Leaderboard onFormSwitch={setCurrentForm} />: 
-      currentForm === "search" ? <SearchPage onFormSwitch={setCurrentForm} />: 
+      // currentForm === "search" ? <SearchPage onFormSwitch={setCurrentForm} />: 
 
       // currentForm === "print" ? <Print onFormSwitch={setCurrentForm} plan={plan}/>:
 

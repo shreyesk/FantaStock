@@ -1,6 +1,6 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import * as React from 'react';
 
 export default function StockSearch() {
   const options = top100Films.map((option) => {
