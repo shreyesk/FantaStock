@@ -46,13 +46,24 @@ def read_user_groups():
     groups = database.read_user_groups(data['name'])
     return jsonify({'groups': groups})
 
+@app.route('/join_group', methods=['POST'])
+def join_group():
+    data = request.get_json()
+    database.join_group(data['group_name'], data['user_name'])
+    return jsonify({'message': 'success'})
+
+@app.route('/leave_group', methods=['POST'])
+def leave_group():
+    data = request.get_json()
+    database.leave_group(data['group_name'], data['user_name'])
+    return jsonify({'message': 'success'})
+
 @app.route('/read_groups', methods=['POST'])
 def read_groups():
     groups = database.read_groups()
-    data = request.get_json()
-    userGroups = database.read_user_groups(data['name'])
-    nonUserGroups = [x for x in groups if x not in userGroups]
-    return jsonify({'groups': nonUserGroups})
+    # userGroups = database.read_user_groups(data['name'])
+    # nonUserGroups = [x for x in groups if x not in userGroups]
+    return jsonify({'groups': groups})
 
 @app.route('/create_user', methods=['POST'])
 def create_user():

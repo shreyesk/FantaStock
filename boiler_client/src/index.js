@@ -7,6 +7,7 @@ import "./index.css";
 import Connections from './Pages/Connections/Connections';
 import Home from './Pages/Home/Home';
 import Landing from "./Pages/Landing/Landing";
+import Group from "./Pages/Group/Group";
 import LeaderboardGroup from './Pages/Leaderboard/LeaderboardGroup';
 import StockSearch from './Pages/Stock/Stock';
 
@@ -26,9 +27,10 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/landing" element={<Landing />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/leaderboard" element={<LeaderboardGroup/>} />
-            <Route path = "/connections" element={<Connections/>}/>
             <Route path = "/stocks" element={<StockSearch/>}/>
+            <Route path = "/groups" element={<Group />}/>
+            <Route path = "/connections" element={<Connections/>}/>
+            <Route path="/leaderboard" element={<LeaderboardGroup/>} />
           </Routes>
 
       </Auth0Provider>
