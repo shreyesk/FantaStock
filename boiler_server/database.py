@@ -25,6 +25,32 @@ def read_history(name):
     document = profiles.find_one(query)
     return document['history']
 
+def read_leaderboard(group):
+    users = client.users
+    groups = users.groups
+    profiles = users.profiles
+
+    query = {"name": group}
+    document = groups.find_one(query)
+
+    scores = []
+    if document:
+        for name in document['users']:
+            profile = profiles.find_one({'name': name})
+            scores.append({'name': profile['name'], 'score': profile['history'][-1]})
+
+    return sorted(scores, key=lambda d: -d['score'])
+
+def read_user_groups(name):
+    users = client.users
+    groups = users.groups
+
+    user_groups = []
+    for document in groups.find():
+        if name in document['users']:
+            user_groups.append(document['name'])
+    return user_groups
+
 def read_portfolio_history(name):
     users = client.users
     profiles = users.profiles

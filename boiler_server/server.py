@@ -4,6 +4,18 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+@app.route('/read_leaderboard', methods=['POST'])
+def read_leaderboard():
+    data = request.get_json()
+    leaderboard = database.read_leaderboard(data['group'])
+    return jsonify({'leaderboard': leaderboard})
+
+@app.route('/read_user_groups', methods=['POST'])
+def read_user_groups():
+    data = request.get_json()
+    groups = database.read_user_groups(data['name'])
+    return jsonify({'groups': groups})
+
 @app.route('/create_user', methods=['POST'])
 def create_user():
     data = request.get_json()
