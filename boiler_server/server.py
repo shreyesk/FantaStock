@@ -1,7 +1,7 @@
-import database
+from flask import Flask, jsonify, request
 from yahoo_fin import stock_info as si
 
-from flask import Flask, jsonify, request
+import database
 
 app = Flask(__name__)
 
@@ -49,7 +49,10 @@ def read_user_groups():
 @app.route('/read_groups', methods=['POST'])
 def read_groups():
     groups = database.read_groups()
-    return jsonify({'groups': groups})
+    data = request.get_json()
+    userGroups = database.read_user_groups(data['name'])
+    nonUserGroups = [x for x in groups if x not in userGroups]
+    return jsonify({'groups': nonUserGroups})
 
 @app.route('/create_user', methods=['POST'])
 def create_user():
